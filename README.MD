@@ -17,3 +17,5 @@ python manage.py makemigrations
 python manage.py migrate
 
 django manage.py runserver
+
+После запуска проекта вам необходимо перейти на урл "ticker" нажать на create font (внизу страницы), после создания настроек текста вы можете загружать видео с нужной вам бегущей строкой 
