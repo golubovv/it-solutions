@@ -1,0 +1,14 @@
+{% extends 'ticker/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <p>
+        <label>{{field.label}}: </label>{{field}}
+        {{field.errors}}
+    </p>
+    {% endfor %}
+    <button type="submit">Create font</button>
+</form>
+{% endblock %}
