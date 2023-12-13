@@ -10,7 +10,7 @@ venv\scripts\activate
 
 pip install -r requirements.txt 
 
-django manage.py runserver
+python manage.py runserver
 
 После запуска проекта вам необходимо перейти на урл "ticker", создать настройки текста, нажав на "create font" внизу страницы (или воспользоваться уже заготовленными из склонированной db.sqlite3). 
 Теперь вы можете загружать видео с необходимой бегущей строкой
