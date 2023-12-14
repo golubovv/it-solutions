@@ -3,8 +3,8 @@ import cv2
 
 COMPLEX = cv2.FONT_HERSHEY_COMPLEX
 SIMPLEX = cv2.FONT_HERSHEY_SIMPLEX
-fonts = {str(COMPLEX): 'COMPLEX', str(SIMPLEX): 'SIMPLEX'}
-colors = {'0 0 255': 'Red', '0 255 0': 'Green', '255 0 0': 'Blue', '255 255 255': 'White', '0 0 0': 'Black'}
+fonts = ((str(COMPLEX), 'COMPLEX'), (str(SIMPLEX), 'SIMPLEX'))
+colors = (('0 0 255', 'Red'), ('0 255 0', 'Green'), ('255 0 0', 'Blue'), ('255 255 255', 'White'), ('0 0 0', 'Black'))
 
 
 class Font(models.Model):
