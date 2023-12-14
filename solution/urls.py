@@ -5,5 +5,5 @@ from ticker.urls import urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ticker/', include(urlpatterns))
+    path('', include(urlpatterns))
 ]

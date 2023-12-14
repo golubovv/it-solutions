@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django import forms
 
 import cv2
 import numpy
@@ -6,12 +6,13 @@ import numpy
 from .models import Ticker
 
 
-class TickerCreateForm(ModelForm):
+class TickerCreateForm(forms.ModelForm):
     class Meta:
         model = Ticker
         fields = ('text', 'font', 'video_width', 'video_height', 'seconds')
 
     def create_ticker(self) -> int:
+        ''' Создаёт видео с бегущей строкой и сохраняет в media '''
         instance = self.save() #Сохраняем в БД результат формы
 
         data = self.cleaned_data

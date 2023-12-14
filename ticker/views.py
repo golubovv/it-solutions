@@ -6,13 +6,12 @@ from django.http import HttpResponse, Http404
 import os
 
 from solution.settings import MEDIA_ROOT, BASE_DIR
-from .models import Ticker, Font
+from .models import Font
 from .forms import TickerCreateForm
 
 
 def download(request, pk):
     file_path = str(BASE_DIR / MEDIA_ROOT) + '/ticker_' + str(pk) + '.mp4'
-    print(file_path)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
@@ -26,7 +25,6 @@ class TickerCreateView(FormView):
 
     def form_valid(self, form):
         ticker_pk = form.create_ticker()
-        print(reverse_lazy('download_ticker', kwargs={'pk':ticker_pk}))
         return redirect(reverse_lazy('download_ticker', kwargs={'pk':ticker_pk}))
 
     def get_context_data(self, **kwargs):
