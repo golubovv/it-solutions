@@ -1,11 +1,10 @@
 from django.db import models
 import cv2
 
-COMPLEX = cv2.FONT_HERSHEY_COMPLEX
-SIMPLEX = cv2.FONT_HERSHEY_SIMPLEX
-fonts = ((str(COMPLEX), 'COMPLEX'), (str(SIMPLEX), 'SIMPLEX'))
-colors = (('0 0 255', 'Red'), ('0 255 0', 'Green'), ('255 0 0', 'Blue'), ('255 255 255', 'White'), ('0 0 0', 'Black'))
 
+fonts = ((str(cv2.FONT_HERSHEY_COMPLEX), 'COMPLEX'), (str(cv2.FONT_HERSHEY_SIMPLEX), 'SIMPLEX'))
+colors = (('0 0 255', 'Red'), ('0 255 0', 'Green'), ('255 0 0', 'Blue'), ('255 255 255', 'White'), ('0 0 0', 'Black'))
+align = (('center', 'CENTER'), ('down', 'DOWN'))
 
 class Font(models.Model):
     name = models.CharField(max_length=10)
@@ -13,6 +12,7 @@ class Font(models.Model):
     scale = models.PositiveIntegerField()
     thickness = models.PositiveIntegerField()
     color = models.CharField(max_length=20, choices=colors, default='White')
+    align = models.CharField(max_length=20, choices=align, default='CENTER')
 
     def __str__(self):
         return f'{self.name}'

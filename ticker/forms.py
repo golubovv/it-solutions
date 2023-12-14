@@ -24,7 +24,7 @@ class TickerCreateForm(forms.ModelForm):
                                  fourcc, 30, (width, height))
         frame = numpy.zeros((height, width, 3), dtype=numpy.uint8)
 
-        x, y = width, height // 2
+        x, y = width, height // 2 if font.align == 'center' else height
         speed = width // (data['seconds']*25) + round(len(data['text']) * 3.3) * (font.scale // 5) // data['seconds']
 
         for _ in range(data['seconds']*30):
