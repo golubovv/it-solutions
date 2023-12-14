@@ -1,4 +1,8 @@
 from pathlib import Path
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rw9pd1r9_#@v)2%(tk!qifz-0fc1hslshqhn1n8g2ybxipjo5-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if getenv('DEBUG', '') == 'True' else False
 
 ALLOWED_HOSTS = []
 
@@ -64,11 +68,14 @@ WSGI_APPLICATION = 'solution.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': getenv('DATABASE', ''),
+        'USER': getenv('USER', ''),
+        'PASSWORD': getenv('PASSWORD', ''),
+        'HOST': getenv('DB_HOST', ''),
+        'PORT': getenv('DB_PORT', '')
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
