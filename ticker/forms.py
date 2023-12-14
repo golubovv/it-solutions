@@ -25,7 +25,7 @@ class TickerCreateForm(forms.ModelForm):
         frame = numpy.zeros((height, width, 3), dtype=numpy.uint8)
 
         x, y = width, height // 2
-        speed = width // (data['seconds']*30) + round(len(data['text']) * 3.2) * (font.scale // 5) // data['seconds']
+        speed = width // (data['seconds']*35) + round(len(data['text']) * 3.2) * (font.scale // 5) // data['seconds']
 
         for _ in range(data['seconds']*30):
             frame.fill(0)
